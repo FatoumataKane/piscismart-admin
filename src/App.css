@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
+.app {
+  display: flex;
+  height: 100vh; /* Pour occuper toute la hauteur de la fenêtre */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar {
+  width: 200px;
+  background-color: #9FB0DB;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  position: fixed; /* Sidebar fixée sur le côté gauche */
+  left: 0;
+  top: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-content {
+  flex-grow: 1;
+  margin-left: 250px; /* Décalage pour la sidebar */
   display: flex;
   flex-direction: column;
+}
+
+.header {
+  background-color: #9FB0DB;
+  padding: 20px;
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: fixed; /* Fixer le header en haut */
+  top: 0;
+  left: 241px; /* Pour ne pas chevaucher la sidebar */
+  right: 1px;
+  z-index: 1; /* Assurez-vous qu'il reste au-dessus du reste du contenu */
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ 
+.dashboard {
+  padding: 20px;
+  margin-top: 60px; /* Pour éviter que le contenu du dashboard ne chevauche le header */
+  margin-left: -18px; 
+  padding: 20px;
+  margin-top: 92px; /* Pour éviter que le contenu du dashboard ne chevauche le header */
+  background-color: #CED5ED;
+  height: calc(100vh - 60px); /* Hauteur du contenu ajustée */
+  height: 800%;
 }

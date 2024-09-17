@@ -1,0 +1,160 @@
+.header {
+  background-color: #f5f5f5;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+.admin{
+  text-align: center;
+}
+
+.profile-picture {
+  width: 50px; /* Agrandir légèrement l'image */
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 18px; /* Augmenter la taille du texte */
+  color: black;
+}
+
+.settings {
+  color: #04080e;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Styles pour le modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Plus sombre pour un focus sur la modale */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.profile-title {
+  display: flex; /* Met les éléments sur une ligne */
+text-align: center;
+ 
+  font-size: 70; /* Taille de police plus grande */
+  font-weight: bold; /* Gras */
+  color: #2D6DB5; /* Couleur du texte */
+  margin-bottom: 20px; /* Espacement sous le titre */
+}
+
+.profile-title span {
+  margin-right: 10px; /* Ajoute un espace entre les mots */
+}
+
+
+.modal-content {
+  background-color: white;
+  padding: 60px;
+  border-radius: 12px;
+  width: 600px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation pour la modale */
+.animate-modal {
+  animation: slide-down 0.4s ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-logo {
+  width: 150px;
+  display: block;
+  margin: 0 auto 20px auto; /* Centrer le logo et ajouter de l'espace en bas */
+}
+
+.form-group {
+  margin-bottom: -20px;
+  color: #90a7e0;
+ 
+}
+
+.form-group label {
+  display: block;
+ 
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  background-color: #EE750E;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  text-transform: capitalize;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #A95B26;
+}
+
+.btn-save {
+  background-color: #4caf50;
+  color: white;
+  text-transform: capitalize;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-save:hover {
+  background-color: #388e3c;
+}
+

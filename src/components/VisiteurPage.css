@@ -1,0 +1,147 @@
+.visiteur-page {
+    padding: 20px;
+    color: #000;
+    margin-top: 70px; /* Ajoute cet espace pour descendre la table */
+    background-color: #f9f9f9; /* Couleur de fond douce */
+    border-radius: 10px; /* Bords arrondis pour un effet doux */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Légère ombre pour donner un effet de relief */
+  }
+  
+  .visiteur-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+  
+  .visiteur-table th,
+  .visiteur-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+  
+  .visiteur-table th {
+    background-color: #e7eaee;
+    color: #050101;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .visiteur-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .visiteur-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  h2 {
+    color: #3366cc;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 300px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .search-bar input:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(51, 102, 204, 0.6);
+  }
+  
+  .search-bar button {
+    padding: 10px;
+    margin-left: 10px;
+    border: none;
+    background-color: #3366cc;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-bar button:hover {
+    background-color: #28549a;
+  }
+  
+  .add-button {
+    background-color: #3366cc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto; /* Centrer le bouton */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #28549a;
+  }
+  
+  /* Toggle Switch */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #28a745;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(25px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  

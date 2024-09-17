@@ -1,0 +1,233 @@
+Style global de la sidebar
+.sidebar {
+  width: 260px;
+  background-color: #1e293b;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Logo centré */
+
+
+.logo-img {
+  width: 210px; /* Ajuster la taille du logo pour être visible */
+  height: auto;
+  margin-left: 1px;
+  cursor: pointer; /* Pour indiquer que le logo est cliquable */
+}
+
+/* Style de la liste du menu */
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  padding: 10px 0;
+  position: relative;
+  transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+/* Style de l'en-tête du menu */
+.menu-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px;
+}
+
+.menu-header:hover {
+  background-color: #3b4252;
+  transform: translateX(5px); /* Animation douce lors du survol */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Icône de la sidebar */
+.sidebar-icon {
+  margin-right: 15px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* Style du texte des menus */
+.menu-header span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  flex-grow: 1;
+}
+
+/* Flèche d'animation des sous-menus */
+.chevron {
+  margin-left: auto;
+  font-size: 12px;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-item.open .chevron {
+  transform: rotate(180deg);
+}
+
+/* Container des sous-menus */
+.submenu-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, padding 0.5s ease;
+  padding: 0;
+}
+
+.sidebar-item.open .submenu-container {
+  max-height: 300px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.submenu {
+  list-style-type: none;
+  padding-left: 25px;
+  margin-top: 8px;
+  transition: padding 0.3s ease;
+}
+
+/* Style des éléments du sous-menu */
+.submenu li {
+  padding: 8px 0;
+  transition: background-color 0.3s ease, padding 0.2s ease-in-out;
+  font-size: 14px;
+}
+
+.submenu li:hover {
+  background-color: #3b4252;
+  border-radius: 4px;
+  transform: translateX(10px);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Style des liens du menu */
+.sidebar-item a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.sidebar-item:hover {
+  background-color: #4c566a;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+/* Déconnexion */
+.sidebar-item:last-child {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #333e52;
+}
+
+/* Style pour l'overlay du modal */
+.modal-overlay {
+  position: fixed;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Style pour le contenu du modal */
+/* Style pour l'overlay du modal de déconnexion */
+.logout-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Style pour le contenu du modal de déconnexion */
+.logout-modal-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: slideDown 0.4s ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logout-modal-content h2 {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 24px;
+}
+
+.logout-modal-content p {
+  margin-bottom: 20px;
+  color: #6a80e2;
+  font-size: 20px;
+}
+
+/* Style des boutons dans le modal de déconnexion */
+.logout-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout-btn-confirm, .logout-btn-cancel {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logout-btn-confirm {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.logout-btn-confirm:hover {
+  background-color: #43a047;
+}
+
+.logout-btn-cancel {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.logout-btn-cancel:hover {
+  background-color: #e53935;
+}
