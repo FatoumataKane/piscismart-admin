@@ -1,6 +1,6 @@
 .dashboard {
   padding: 20px;
-  background-color: #f5f7fa;
+  background-color: #F0F0F0;
   height: 100%;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .stat-box {
-  background-color: #2b3e59;
+  background-color: #2D6DB5;
   padding: 40px;
   color: #ced5ed;
   border-radius: 12px;
@@ -81,3 +81,49 @@
   margin-right: 8px;
   border-radius: 50%;
 }
+.chart-container {
+  background-color: #ffffff;
+  padding: 70px;
+  margin: 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+.stat-box {
+  background-color: #2e4091;
+  padding: 40px;
+  color: #ced5ed;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: calc(100% / 6 - 20px);
+}
+
+.stat-box h3 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.stat-box p {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #ced5ed;
+}
+
+/* Style for icons */
+.stat-icon {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.stat-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+

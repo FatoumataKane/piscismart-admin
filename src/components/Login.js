@@ -8,21 +8,39 @@ import mobileApp from '../assets/applipiscismart.png';
 import pisciBox from '../assets/piscibox.png';
 
 const Login = ({ setIsAuthenticated }) => {
-  const [username, setUsername] = useState('');
+  const [telephone, setTelephone] = useState('');  // Changement de username à telephone
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Simuler une validation d'authentification
-    if (username === 'admin' && password === 'password') {
-      setIsAuthenticated(true);
-      navigate('/dashboard');
-    } else {
-      alert("Nom d'utilisateur ou mot de passe incorrect");
+  
+    try {
+      const response = await fetch('http://3.93.129.57:8080/Admin/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({ telephone, motDePasse: password }),
+      });
+  
+      if (response.ok) {
+        const admin = await response.json();
+  
+        // Stocker les informations de l'utilisateur dans le localStorage
+        localStorage.setItem('adminData', JSON.stringify(admin));
+        setIsAuthenticated(true);
+  
+        navigate('/dashboard'); // Rediriger vers le tableau de bord
+      } else {
+        setError("Nom d'utilisateur ou mot de passe incorrect");
+      }
+    } catch (error) {
+      setError("Erreur lors de la connexion");
     }
   };
+  
 
   return (
     <div className="login-container">
@@ -32,17 +50,17 @@ const Login = ({ setIsAuthenticated }) => {
         </div>
         <div className="login-form">
           <h2>CONNEXION</h2>
-          {/* <p>Veuillez entrer vos identifiants pour vous connecter.</p> */}
           <form onSubmit={handleLogin}>
+            {error && <p className="error-message">{error}</p>}
             <div className="form-group">
               <div className="input-icon">
                 <FontAwesomeIcon icon={faUser} className="icon" />
                 <input
                   type="text"
-                  id="username"
-                  placeholder="Nom d'utilisateur"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  id="telephone"
+                  placeholder="Numéro de téléphone"
+                  value={telephone}
+                  onChange={(e) => setTelephone(e.target.value)}
                 />
               </div>
             </div>
@@ -63,7 +81,6 @@ const Login = ({ setIsAuthenticated }) => {
                 Connexion
               </button>
               <a href="#" className="forgot-password">Mot de passe oublié ?</a>
-              <a href="#" className="admin-link">Créer un compte Admin.</a>
             </div>
           </form>
         </div>

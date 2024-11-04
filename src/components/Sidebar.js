@@ -27,7 +27,6 @@ const LogoutSidebarModal = ({ onConfirm, onCancel }) => {
   return (
     <div className="logout-modal-overlay"> {/* Class spécifique pour l'overlay */}
       <div className="logout-modal-content"> {/* Class spécifique pour le contenu */}
-       
         <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
         <div className="logout-modal-buttons"> {/* Class spécifique pour les boutons */}
           <button className="logout-btn-confirm" onClick={onConfirm}>Oui, déconnecter</button>
@@ -51,8 +50,15 @@ function Sidebar({ setIsAuthenticated }) {
 
   // Fonction pour confirmer la déconnexion
   const handleConfirmLogout = () => {
-    setIsAuthenticated(false); // Simuler la déconnexion
-    navigate('/login'); // Rediriger vers la page de login
+    // Supprimer les informations de l'utilisateur du localStorage ou sessionStorage
+    localStorage.removeItem('isAuthenticated'); // ou sessionStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userData'); // Si tu stockes des infos de l'utilisateur
+
+    // Simuler la déconnexion
+    setIsAuthenticated(false);
+
+    // Rediriger vers la page de login
+    navigate('/login');
   };
 
   // Fonction pour annuler la déconnexion

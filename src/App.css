@@ -42,7 +42,7 @@
   margin-left: -18px; 
   padding: 20px;
   margin-top: 92px; /* Pour éviter que le contenu du dashboard ne chevauche le header */
-  background-color: #CED5ED;
+  background-color: #F0F0F0;
   height: calc(100vh - 60px); /* Hauteur du contenu ajustée */
   height: 800%;
 }

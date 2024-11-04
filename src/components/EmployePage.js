@@ -1,25 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EmployePage.css'; // Le fichier CSS pour le style
 
 const EmployePage = () => {
-  // Simuler une liste d'employés
-  const [employes, setEmployes] = useState([
-    { id: 'Emp001', nom: 'DIALLO', prenom: 'Alpha', contact: '+223 74 00 11 22', employeur: 'KANE', etat: 'Actif' },
-    { id: 'Emp002', nom: 'TRAORE', prenom: 'Aminata', contact: '+223 74 00 11 23', employeur: 'TOURE', etat: 'Désactiver' },
-    { id: 'Emp003', nom: 'CAMARA', prenom: 'Mamadou', contact: '+223 74 00 11 24', employeur: 'DEMBELE', etat: 'Actif' },
-  ]);
+  const [employes, setEmployes] = useState([]);
+  const [loading, setLoading] = useState(true); // Indicateur de chargement
+  const [searchTerm, setSearchTerm] = useState(''); // Recherche
+
+  // Fonction pour récupérer les employés depuis l'API backend
+  useEffect(() => {
+    fetch('http://3.93.129.57:8080/employe/read')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Erreur lors de la récupération des employés');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setEmployes(data); // Stocker les employés dans l'état
+        setLoading(false); // Arrêter le chargement
+      })
+      .catch((error) => {
+        console.error('Erreur lors du chargement des employés:', error);
+        setLoading(false); // Arrêter le chargement même en cas d'erreur
+      });
+  }, []);
 
   // Fonction pour basculer l'état actif/désactivé
   const toggleStatus = (id) => {
     setEmployes(
       employes.map((employe) =>
-        employe.id === id ? { ...employe, etat: employe.etat === 'Actif' ? 'Désactiver' : 'Actif' } : employe
+        employe.idemploye === id
+          ? { ...employe, etat: employe.etat === 'Actif' ? 'Désactiver' : 'Actif' }
+          : employe
       )
     );
   };
-
-  // Recherche par nom ou prénom
-  const [searchTerm, setSearchTerm] = useState('');
 
   // Filtrer les employés par nom ou prénom
   const filteredEmployes = employes.filter(
@@ -27,6 +42,11 @@ const EmployePage = () => {
       employe.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employe.prenom.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Afficher un message de chargement pendant la récupération des données
+  if (loading) {
+    return <div>Chargement des employés...</div>;
+  }
 
   return (
     <div className="employe-page">
@@ -43,28 +63,26 @@ const EmployePage = () => {
       <table className="employe-table">
         <thead>
           <tr>
-            {/* <th>ID</th> */}
             <th>Nom</th>
             <th>Prénom</th>
             <th>Contact</th>
-            <th>Employeur</th>
+            <th>Pisciculteur</th>
             <th>État</th>
           </tr>
         </thead>
         <tbody>
           {filteredEmployes.map((employe) => (
-            <tr key={employe.id}>
-              {/* <td>{employe.id}</td> */}
+            <tr key={employe.idemploye}>
               <td>{employe.nom}</td>
               <td>{employe.prenom}</td>
-              <td>{employe.contact}</td>
-              <td>{employe.employeur}</td>
+              <td>{employe.telephone}</td>
+              <td>{employe.pisciculteur ? employe.pisciculteur.nom : 'Aucun'}</td> {/* Nom du pisciculteur */}
               <td>
                 <label className="switch">
                   <input
                     type="checkbox"
                     checked={employe.etat === 'Actif'}
-                    onChange={() => toggleStatus(employe.id)}
+                    onChange={() => toggleStatus(employe.idemploye)}
                   />
                   <span className="slider round"></span>
                 </label>
